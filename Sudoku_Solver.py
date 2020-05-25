@@ -1,4 +1,3 @@
-#This file is a open-source project created by L.Yogesh Kumar 
 import pygame
 import copy
 import solver as s
