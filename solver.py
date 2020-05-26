@@ -1,13 +1,15 @@
+import random
 
-board=[[0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0]]
+board=[
+        [0, 0, 0, 8, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 4, 3],
+        [5, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 7, 0, 8, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 2, 0, 0, 3, 0, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0, 7, 5],
+        [0, 0, 3, 4, 0, 0, 0, 0, 0],
+        [0, 0, 0, 2, 0, 0, 6, 0, 0]]
 
 def display_board(x=-1,y=-1):
 
@@ -31,16 +33,21 @@ def solve():
 
 def find_the_val():
   global board
+  s=set()
   pos=next_epmty(board)
   if not pos:
     return True
   
   else:
     i,j=pos
-  for number in range(1,10):
+  # for number in range(1,10):
+  while len(s) <=8:
+    pre_len=len(s)
+    while pre_len==len(s):
+     
+      board[i][j]=random.randint(1,9)
+      s.add(board[i][j])
       
-    board[i][j]=number
-
     display_board()
     if check(i,j):
       if find_the_val():
