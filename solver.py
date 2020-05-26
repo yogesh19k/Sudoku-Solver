@@ -22,52 +22,42 @@ def solve():
   
   display_board()
   print()
-  if find_the_val(0,0):
+  if find_the_val():
     display_board()
     return True
-
+  
   else:
     return False
 
-def find_the_val(i,j):
+def find_the_val():
   global board
-
-  if i==9:
-
+  pos=next_epmty(board)
+  if not pos:
     return True
-
-  if(board[i][j]==0):
-    for number in range(1,10):
-      
-      board[i][j]=number
-      display_board()
-      if check(i,j):
-
-        if j!=8:
-          if find_the_val(i,j+1):
-            return True
-
-
-        else:
-
-          if find_the_val(i+1,0):
-            return True
-
-      
-      display_board(i,j)
-      board[i][j]=0
-      
-
+  
   else:
-    if j!=8:
-      if find_the_val(i,j+1):
-        return True
-    else:
-     if find_the_val(i+1,0):
+    i,j=pos
+  for number in range(1,10):
+      
+    board[i][j]=number
+
+    display_board()
+    if check(i,j):
+      if find_the_val():
         return True
 
+    board[i][j]=0
 
-  return  False
+  display_board(i,j)
+  return False
+      
+def next_epmty(board):
+  for i in range(len(board)):
+    for j in range(len(board[0])):
+      if(board[i][j]==0):
+        return i,j
+  
+  return False
 
 def check(row,col):
 
@@ -127,4 +117,5 @@ def row_check(row):
     return False
 
 if __name__ == '__main__':
-  solve()
+  
+  print(solve())

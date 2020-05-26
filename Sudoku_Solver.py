@@ -195,7 +195,7 @@ while run:
                     s.board=copy.deepcopy(setup_board)
                 solve_mode=True
                 
-                done=s.find_the_val(0,0)
+                done=s.find_the_val()
                       
             if pos[0]>380 and pos[0]<480 and pos[1]>240  and pos[1]<280 : # solve in one go
                 if(setup_mode):
@@ -203,7 +203,7 @@ while run:
                     s.board=copy.deepcopy(setup_board)
                 # print("skip")
                 skip=True
-                done=s.find_the_val(0,0)
+                done=s.find_the_val()
                 skip=False
             
             if pos[0]>380 and pos[0]<480 and pos[1]>290  and pos[1]<330 : #next
